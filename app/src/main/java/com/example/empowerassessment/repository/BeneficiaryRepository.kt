@@ -13,6 +13,11 @@ class BeneficiaryRepository(private val context: Context) {
         return jsonString?.let{ parseBeneficiaries(it) }
     }
 
+    fun getBeneficiaryBySSN(ssn: String): Beneficiary? {
+        val beneficiaries = getBeneficiaries()
+        return beneficiaries?.find { it.socialSecurityNumber == ssn }
+    }
+
     private fun loadJSONFromRaw(fileName: String): String? {
         return try {
           val resourceId = context.resources.getIdentifier(

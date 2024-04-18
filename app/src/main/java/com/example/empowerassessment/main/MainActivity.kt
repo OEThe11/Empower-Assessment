@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.empowerassessment.R
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var mainLayout: LinearLayout
     private lateinit var viewModel: MainViewModel
     private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(application))
             .get(MainViewModel::class.java)
 
-        val layout = LinearLayout(this).apply {
+        mainLayout = LinearLayout(this).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
             orientation = LinearLayout.VERTICAL
         }
@@ -35,12 +35,12 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
 
-        val adapter = BeneficiaryAdapter(emptyList())
+        val adapter = BeneficiaryAdapter(emptyList(), this)
         recyclerView.adapter = adapter
 
-        layout.addView(recyclerView)
+        mainLayout.addView(recyclerView)
 
-        setContentView(layout)
+        setContentView(mainLayout)
 
         viewModel.beneficiaries.observe(this) { beneficiaries ->
             if (beneficiaries != null) {
@@ -48,6 +48,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        setContentView(layout)
+
         }
     }

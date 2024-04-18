@@ -1,5 +1,6 @@
 package com.example.empowerassessment.models
 
+//Data Class used to store the JSON Data
 data class Beneficiary(
     val beneType: String,
     val beneficiaryAddress: BeneficiaryAddress,

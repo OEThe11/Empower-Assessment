@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Empower Assessment</string>
+    <string name="account_holders_name">Elizabeth Smith Beneficiaries</string>
+    <string name="address_string">ADDRESS:</string>
 </resources>
